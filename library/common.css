@@ -1,0 +1,25 @@
+#common-body {
+	background-image: url("../resource/bernard-hermant-hQ3WZnY3yZ0-unsplash.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+#container {
+	padding: 4rem 1rem;
+}
+
+.card {
+	background-color: rgba(250, 250, 250, 0.7);
+}
+
+#border-less {
+    border: rgba(0, 0, 0, 0);
+}
+
+#border-less:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    text-decoration: underline
+}

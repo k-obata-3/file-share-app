@@ -26,6 +26,7 @@ class FileList extends Base
 
             $this-> smarty-> assign('name',$_SESSION['name']);
             $this-> smarty-> assign('list',$fileInfo);
+            $this-> smarty-> assign('authority',$_SESSION['authority']);
 
             $this-> smarty-> display(FILE_LIST_VIEW);
         }

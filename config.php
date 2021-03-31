@@ -16,4 +16,5 @@ define('LOGIN_VIEW', 'loginView.tpl');
 define('SIGNUP_VIEW', 'signupView.tpl');
 define('FILE_LIST_VIEW', 'fileListView.tpl');
 define('USER_INFO_EDIT_VIEW', 'userInfoEditView.tpl');
+define('ACCOUNT_LIST_VIEW', 'accountListView.tpl');
  ?>

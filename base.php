@@ -2,6 +2,7 @@
 require_once('library/libs/Smarty.class.php');
 require_once('config.php');
 require_once('model.php');
+require_once('util.php');
 
 /**
  * 基底クラス
@@ -10,6 +11,7 @@ abstract class Base
 {
     public $smarty;
     public $model;
+    public $util;
     public $message = '';
 
     /**
@@ -29,6 +31,7 @@ abstract class Base
             session_start();
 
             $this-> model = new Model();
+            $this-> util = new Util();
 
             if($this-> isAuth())
             {

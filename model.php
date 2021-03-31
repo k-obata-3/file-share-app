@@ -22,9 +22,9 @@ class Model
      */
     public function getLoginAccount($name, $pass)
     {
-        $stmt = $this-> pdo-> prepare(sprintf('SELECT * FROM %s WHERE name = ? AND password = ?', TABLE_NAME));
-        $stmt-> execute(array($name, $pass));
-        return $stmt-> fetchAll(PDO::FETCH_ASSOC);
+        // $stmt = $this-> pdo-> prepare(sprintf('SELECT * FROM %s WHERE name = ? AND password = ?', TABLE_NAME));
+        // $stmt-> execute(array($name, $pass));
+        // return $stmt-> fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -34,7 +34,7 @@ class Model
      */
     public function getUniqueAccount($name, $id)
     {
-        $stmt = $this-> pdo-> prepare(sprintf('SELECT name FROM %s WHERE name = ? AND id != ?', TABLE_NAME));
+        $stmt = $this-> pdo-> prepare(sprintf('SELECT * FROM %s WHERE name = ? AND id != ?', TABLE_NAME));
         $stmt-> execute(array($name, $id));
         return $stmt-> fetchAll(PDO::FETCH_ASSOC);
     }
@@ -59,6 +59,32 @@ class Model
         $stmt = $this-> pdo-> prepare(sprintf('UPDATE %s SET name = ?, password = ? WHERE id = ?', TABLE_NAME));
         $stmt-> execute(array($name, $pass, $id));
         $this-> pdo-> commit();
+    }
+
+    public function getAccountList()
+    {
+        $stmt = $this-> pdo-> prepare(sprintf('SELECT * FROM %s', TABLE_NAME));
+        $stmt-> execute();
+        $rows = $stmt-> fetchAll(PDO::FETCH_ASSOC);
+        $userInfo = [];
+
+        foreach($rows as $row)
+        {
+            $authority = "";
+            switch ($row['authority'])
+            {
+                case 1:
+                    $authority = "管理者";
+                    break;
+                case 2:
+                    $authority = "利用者";
+                    break;
+            }
+
+            $userInfo[] = array('id'=>$row['id'], 'name'=>$row['name'], 'authNum'=>$row['authority'], 'authority'=>$authority);
+        }
+
+        return $userInfo;
     }
 }
 

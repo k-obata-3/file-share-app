@@ -23,7 +23,7 @@ class UserInfoEdit extends Base
                 }
                 else
                 {
-                    $this-> model-> updateAccountInfo($_POST['name'], $_POST['password'], $_SESSION['id']);
+                    $this-> model-> updateAccountInfo($_POST['name'], $this-> util-> getHashText($_POST['password']), $_SESSION['id']);
 
                     $_SESSION['name'] = $_POST['name'];
 

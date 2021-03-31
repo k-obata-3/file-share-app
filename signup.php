@@ -23,7 +23,7 @@ class Signup extends Base
                 }
                 else
                 {
-                    $this-> model-> insertAccount($_POST['name'], $_POST['password'], 1);
+                    $this-> model-> insertAccount($_POST['name'], $this-> util-> getHashText($_POST['password']), 1);
                     $this-> message = '登録しました。';
                 }
             }

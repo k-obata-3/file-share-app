@@ -15,9 +15,8 @@ class Login extends Base
         {
             if(isset($_POST['name']) && isset($_POST['password']))
             {
-                $rows = $this-> model-> getLoginAccount($_POST['name'], $_POST['password']);
-
-                if(count($rows) != 0)
+                $rows = $this-> model-> getUniqueAccount($_POST['name'], 0);
+                if(count($rows) != 0 && $this-> util-> isDecording($_POST['password'], $rows[0]['password']))
                 {
                     $_SESSION['login'] = TRUE;
                     $_SESSION['id'] = $rows[0]['id'];

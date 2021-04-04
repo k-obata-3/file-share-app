@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+    // 全選択ボタンクリック
     $('#slected-btn').on('click', function()
     {
         var isChecked = false;

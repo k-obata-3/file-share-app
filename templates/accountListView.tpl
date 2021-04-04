@@ -16,7 +16,7 @@
 
 		<div class="col-md-4 offset-md-8 text-right" id="button-container">
 			<form action="accountExport.php" method="post">
-				<button type="submit" class="btn btn-light" name="account">エクスポート</button>
+				<button type="submit" class="btn btn-light" name="account">CSV出力</button>
 			</form>
 		</div>
 

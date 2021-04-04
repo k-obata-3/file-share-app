@@ -21,7 +21,7 @@ class FileList extends Base
                 $absolutePath = UPLOAD_DIR ."/" .$file;
                 $size = filesize($absolutePath);
                 $udDate = date('Y/m/d H:i:s',filemtime($absolutePath));
-                $fileInfo[] = array('name'=>$file, 'size'=>$size, 'udDate'=>$udDate);
+                $fileInfo[] = array('name'=>$file, 'size'=>$size, 'udDate'=>$udDate, 'path'=>$absolutePath);
             }
 
             $this-> smarty-> assign('name',$_SESSION['name']);

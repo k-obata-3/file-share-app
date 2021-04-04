@@ -17,7 +17,11 @@
 			</div>
 		</nav>
 
-		<div class="col-md-4 offset-md-8 text-right" id="user-info-container">
+		<div class="col-md-12 text-right" id="user-info-container">
+			<form id="upload-form" method="post" action="fileUploader.php" enctype="multipart/form-data">
+				<input type="file" name="up-file">
+				<button type="submit" class="btn btn-sm btn-info" id="upload-btn">アップロード</button>
+			</form>
 			{if $authority == 1}
 				<!-- 管理者アカウントの場合 -->
 				<button type="button" class="btn btn-light" onclick="toAccountList()">アカウント一覧</button>
@@ -26,38 +30,36 @@
 		</div>
 
 		<div class="col-md-10 offset-md-1" id="file-table">
-			<table class="table table-striped table-bordered table-light">
-				<thead class="thead-dark">
-					<tr>
-						<th width="5%" scope="col"></th>
-						<th width="5%" scope="col">No</th>
-						<th width="50%" scope="col">ファイル名</th>
-						<th width="20%" scope="col">サイズ[byte]</th>
-						<th width="20%" scope="col">更新日時</th>
-					</tr>
-				</thead>
-				<tbody>
-					<form name="file-form">
+			<form name="file-form" method="post" action="fileDelete.php">
+				<table class="table table-striped table-bordered table-light">
+					<thead class="thead-dark">
+						<tr>
+							<th width="5%" scope="col"></th>
+							<th width="5%" scope="col">No</th>
+							<th width="50%" scope="col">ファイル名</th>
+							<th width="20%" scope="col">サイズ[byte]</th>
+							<th width="20%" scope="col">更新日時</th>
+						</tr>
+					</thead>
+					<tbody>
 						{foreach from=$list item=file name=fileTable}
 						<tr>
-							<td id="check-box"><input type="checkbox" name="file" value="{$file['name']}"></td>
+							<td id="check-box"><input type="checkbox" name="file[]" value="{$file['name']}"></td>
 							<td>{$smarty.foreach.fileTable.index + 1}</td>
-							<td>{$file['name']}</td>
+							<td><a href="{$file['path']}" download="{$file['name']}">{$file['name']}</a></td>
 							<td>{$file['size']}</td>
 							<td>{$file['udDate']}</td>
 						</tr>
 						{/foreach}
-					</form>
-				</tbody>
-			</table>
-			<div class="text-left">
-				<button type="button" class="btn btn-sm btn-light" id="slected-btn">全選択</button>
-			</div>
-			<div class="text-right">
-				<button type="button" class="btn btn-sm btn-danger" id="delete-btn">削除</button>
-				<button type="button" class="btn btn-sm btn-info" id="upload-btn">アップロード</button>
-				<button type="button" class="btn btn-sm btn-success" id="download-btn">ダウンロード</button>
-			</div>
+					</tbody>
+				</table>
+				<div class="text-left">
+					<button type="button" class="btn btn-sm btn-light" id="slected-btn">全選択</button>
+				</div>
+				<div class="text-right">
+					<button type="submit" class="btn btn-sm btn-danger" id="delete-btn">削除</button>
+				</div>
+			</form><br/>
 		</div>
 	</body>
 </html>
@@ -81,6 +83,11 @@
 
 #check-box {
 	text-align: center;
+}
+
+#upload-form {
+	display: inline-block;
+	padding-right: 2rem;
 }
 </style>
 

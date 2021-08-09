@@ -24,6 +24,11 @@ class FileList extends Base
                 $fileInfo[] = array('name'=>$file, 'size'=>$size, 'udDate'=>$udDate, 'path'=>$absolutePath);
             }
 
+            // ソートの基準となるkeyを取得
+            $keyColumns = array_column($fileInfo, 'udDate');
+            // 更新日時 降順でソート
+            array_multisort($keyColumns, SORT_DESC, $fileInfo);
+
             $this-> smarty-> assign('user_id',$_SESSION['user_id']);
             $this-> smarty-> assign('list',$fileInfo);
             $this-> smarty-> assign('authority',$_SESSION['authority']);

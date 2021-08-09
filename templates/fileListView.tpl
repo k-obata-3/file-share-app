@@ -46,7 +46,7 @@
 						<tr>
 							<td id="check-box"><input type="checkbox" name="file[]" value="{$file['name']}"></td>
 							<td>{$smarty.foreach.fileTable.index + 1}</td>
-							<td><a href="{$file['path']}" download="{$file['name']}">{$file['name']}</a></td>
+							<td>{$file['name']}</td>
 							<td>{$file['size']}</td>
 							<td>{$file['udDate']}</td>
 						</tr>
@@ -55,6 +55,7 @@
 				</table>
 				<div class="text-left">
 					<button type="button" class="btn btn-sm btn-light" id="slected-btn">全選択</button>
+					<button type="submit" class="btn btn-sm btn-success" id="download-btn" formaction="fileDownloader.php">ダウンロード</button>
 				</div>
 				<div class="text-right">
 					<button type="submit" class="btn btn-sm btn-danger" id="delete-btn" formaction="fileDelete.php">削除</button>

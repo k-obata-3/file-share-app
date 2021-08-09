@@ -24,7 +24,7 @@ class FileList extends Base
                 $fileInfo[] = array('name'=>$file, 'size'=>$size, 'udDate'=>$udDate, 'path'=>$absolutePath);
             }
 
-            $this-> smarty-> assign('name',$_SESSION['name']);
+            $this-> smarty-> assign('user_id',$_SESSION['user_id']);
             $this-> smarty-> assign('list',$fileInfo);
             $this-> smarty-> assign('authority',$_SESSION['authority']);
 

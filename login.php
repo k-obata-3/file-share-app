@@ -13,21 +13,21 @@ class Login extends Base
     {
         try
         {
-            if(isset($_POST['name']) && isset($_POST['password']))
+            if(isset($_POST['user_id']) && isset($_POST['password']))
             {
-                $rows = $this-> model-> getUniqueAccount($_POST['name'], 0);
-                if(count($rows) != 0 && $this-> util-> isDecording($_POST['password'], $rows[0]['password']))
+                $rows = $this-> model-> findAccount($_POST['user_id']);
+                if(count($rows) != 0 && $this-> util-> isVerifyHash($_POST['password'], $rows[0]['password']))
                 {
                     $_SESSION['login'] = TRUE;
                     $_SESSION['id'] = $rows[0]['id'];
-                    $_SESSION['name'] = $rows[0]['name'];
+                    $_SESSION['user_id'] = $rows[0]['user_id'];
                     $_SESSION['authority'] = $rows[0]['authority'];
 
                     header('Location: fileList.php');
                 }
                 else
                 {
-                    $this-> message = "ログインIDまたはパスワードに誤りがあります。";
+                    $this-> message = ACCOUNT_ERROR_MESSAGE;
                 }
             }
 

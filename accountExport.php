@@ -20,12 +20,12 @@ class AccountExport extends Base
                 $file_name = "account_list.csv";
                 $fp = fopen('php://output', 'w');
 
-                $header = array("ID", "ユーザ名", "権限");
+                $header = array("ID", "ユーザID", "権限");
                 fputcsv($fp, $header, ',', '"');
 
                 foreach ($rows as $row)
                 {
-                    $line = array($row['id'], $row['name'], $row['authority']);
+                    $line = array($row['id'], $row['user_id'], $row['authority']);
                     fputcsv($fp, $line, ',', '"');
                 }
 

@@ -21,9 +21,9 @@ class Util
     }
 
     /**
-     * 復号できるか
+     * ハッシュ化された値を復号して検証する
      */
-    public function isDecording($target, $source)
+    public function isVerifyHash($target, $source)
     {
         return password_verify($target, $source);
     }

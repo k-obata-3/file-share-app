@@ -5,8 +5,8 @@ define('TEMPLATES_C_DIR', 'templates_c/');
 define('UPLOAD_DIR', 'uploadContainer');
 
 // DB関連定数
-define('DB_USER', 'task');
-define('DB_PASS', 'task');
+define('DB_USER', 'root');
+define('DB_PASS', 'password');
 define('DB_NAME', 'file_share_app');
 define('DB_HOST', '%');
 define('TABLE_NAME', 'account');

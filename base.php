@@ -3,6 +3,7 @@ require_once('library/libs/Smarty.class.php');
 require_once('config.php');
 require_once('model.php');
 require_once('util.php');
+require_once('const.php');
 
 /**
  * 基底クラス

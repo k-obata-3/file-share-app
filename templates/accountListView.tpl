@@ -24,18 +24,16 @@
 			<table class="table table-striped table-bordered table-light">
 				<thead class="thead-dark">
 					<tr>
-						<th width="5%" scope="col">No</th>
-						<th width="55%" scope="col">ID</th>
-						<th width="20%" scope="col">ユーザ名</th>
+						<th width="10%" scope="col">ID</th>
+						<th width="70%" scope="col">ユーザID</th>
 						<th width="20%" scope="col">権限</th>
 					</tr>
 				</thead>
 				<tbody>
 					{foreach from=$list item=account name=accountTable}
 					<tr>
-						<td>{$smarty.foreach.accountTable.index + 1}</td>
 						<td>{$account['id']}</td>
-						<td>{$account['name']}</td>
+						<td>{$account['user_id']}</td>
 						<td>{$account['authority']}</td>
 					</tr>
 					{/foreach}

@@ -13,21 +13,21 @@ class UserInfoEdit extends Base
     {
         try
         {
-            if(isset($_POST['name']) && isset($_POST['password']))
+            if(isset($_POST['user_id']) && isset($_POST['password']))
             {
-                $rows = $this-> model-> getUniqueAccount($_POST['name'], $_SESSION['id']);
+                $rows = $this-> model-> findAccount($_POST['user_id']);
 
-                if(count($rows) != 0)
+                if(count($rows) != 0 && $_SESSION['user_id'] != $rows[0]['user_id'])
                 {
-                    $this-> message = 'ユーザ名は既に使用されています。';
+                    $this-> message = USER_ID_UNIQUE_ERROR_MESSAGE;
                 }
                 else
                 {
-                    $this-> model-> updateAccountInfo($_POST['name'], $this-> util-> getHashText($_POST['password']), $_SESSION['id']);
+                    $this-> model-> updateAccount($_POST['user_id'], $this-> util-> getHashText($_POST['password']), $_SESSION['id']);
 
-                    $_SESSION['name'] = $_POST['name'];
+                    $_SESSION['user_id'] = $_POST['user_id'];
 
-                    $this-> message = '変更しました。';
+                    $this-> message = REGISTRATION_SUCCESSFUL_MESSAGE;
                 }
             }
 

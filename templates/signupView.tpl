@@ -14,14 +14,14 @@
 			<button type="button" class="btn btn-sm btn-outline-light" id="border-less" onclick="toLogin()">ログインに戻る</button>
 		</nav>
 
-		<form name="signupForm" action="signup.php" method="post" onsubmit="return onInputValid()">
+		<form name="signupForm" action="signup.php" method="post" onsubmit="return onInputValid()" autocomplete="off">
 			<div class="col-md-6 offset-md-3" id="container">
 				<div class="card rounded-0">
 					<div class="card-body col-md-10 offset-md-1">
 						<center><h3>サインアップ</h3></center>
 						<div class="form-group">
-							<label class="col-form-label">ユーザ名</label>
-							<input type="text" class="form-control" name="name" value="">
+							<label class="col-form-label">ユーザID</label>
+							<input type="text" class="form-control" name="user_id" value="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">パスワード</label>
@@ -47,11 +47,11 @@
 <script type="text/javascript">
 	function onInputValid()
 	{
-		var name = document.forms.signupForm.elements['name'];
+		var name = document.forms.signupForm.elements['user_id'];
 		var pass = document.forms.signupForm.elements['password'];
 		if(name.value == "" || pass.value == "")
 		{
-			alert("ユーザ名またはパスワードが未入力です。");
+			alert("ユーザIDまたはパスワードが未入力です。");
 			return false;
 		}
 

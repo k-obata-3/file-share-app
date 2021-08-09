@@ -13,18 +13,18 @@ class Signup extends Base
     {
         try
         {
-            if(isset($_POST['name']) && isset($_POST['password']))
+            if(isset($_POST['user_id']) && isset($_POST['password']))
             {
-                $rows = $this-> model-> getUniqueAccount($_POST['name'], 0);
+                $rows = $this-> model-> findAccount($_POST['user_id']);
 
                 if(count($rows) != 0)
                 {
-                    $this-> message = 'ユーザ名は既に使用されています。';
+                    $this-> message = USER_ID_UNIQUE_ERROR_MESSAGE;
                 }
                 else
                 {
-                    $this-> model-> insertAccount($_POST['name'], $this-> util-> getHashText($_POST['password']), 1);
-                    $this-> message = '登録しました。';
+                    $this-> model-> insertAccount($_POST['user_id'], $this-> util-> getHashText($_POST['password']), 2);
+                    $this-> message = REGISTRATION_SUCCESSFUL_MESSAGE;
                 }
             }
 

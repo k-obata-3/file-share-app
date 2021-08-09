@@ -26,11 +26,11 @@
 				<!-- 管理者アカウントの場合 -->
 				<button type="button" class="btn btn-light" onclick="toAccountList()">アカウント一覧</button>
 			{/if}
-			<button type="button" class="btn btn-light" onclick="toUserInfoEdit()"><img src="resource/person-circle.svg">&nbsp;{$name}&nbsp;</button>
+			<button type="button" class="btn btn-light" onclick="toUserInfoEdit()"><img src="resource/person-circle.svg">&nbsp;{$user_id}&nbsp;</button>
 		</div>
 
 		<div class="col-md-10 offset-md-1" id="file-table">
-			<form name="file-form" method="post" action="fileDelete.php">
+			<form name="file-form" method="post">
 				<table class="table table-striped table-bordered table-light">
 					<thead class="thead-dark">
 						<tr>
@@ -57,7 +57,7 @@
 					<button type="button" class="btn btn-sm btn-light" id="slected-btn">全選択</button>
 				</div>
 				<div class="text-right">
-					<button type="submit" class="btn btn-sm btn-danger" id="delete-btn">削除</button>
+					<button type="submit" class="btn btn-sm btn-danger" id="delete-btn" formaction="fileDelete.php">削除</button>
 				</div>
 			</form><br/>
 		</div>

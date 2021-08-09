@@ -13,14 +13,14 @@
   			<span class="navbar-brand">ファイル共有システム</span>
 			<button type="button" class="btn btn-sm btn-outline-light" onclick="toSignupView()">サインアップ</button>
 		</nav>
-		<form name="loginForm" action="login.php" method="post" onsubmit="return onInputValid()">
+		<form name="loginForm" action="login.php" method="post" onsubmit="return onInputValid()" autocomplete="off">
 			<div class="col-md-6 offset-md-3" id="container">
 				<div class="card rounded-0">
 					<div class="card-body col-md-10 offset-md-1">
 						<center><h3>ログイン</h3></center>
 						<div class="form-group">
-							<label class="col-form-label">ユーザ名</label>
-							<input type="text" class="form-control" name="name" value="">
+							<label class="col-form-label">ユーザID</label>
+							<input type="text" class="form-control" name="user_id" value="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">パスワード</label>
@@ -51,11 +51,11 @@
 
 	function onInputValid()
 	{
-		var name = document.forms.loginForm.elements['name'];
+		var id = document.forms.loginForm.elements['user_id'];
 		var pass = document.forms.loginForm.elements['password'];
-		if(name.value == "" || pass.value == "")
+		if(id.value == "" || pass.value == "")
 		{
-			alert("ユーザ名またはパスワードが未入力です。");
+			alert("ユーザIDまたはパスワードが未入力です。");
 			return false;
 		}
 

@@ -14,7 +14,7 @@ CREATE DATABASE IF NOT EXISTS file_share_app CHARACTER SET utf8 COLLATE utf8_gen
 
 テーブルを作成
 ```
-CREATE TABLE IF NOT EXISTS account (id BIGINT auto_increment, name VARCHAR(255), password VARCHAR(255), authority BIGINT, PRIMARY KEY(id));
+CREATE TABLE IF NOT EXISTS account (id BIGINT auto_increment, user_id VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, authority BIGINT NOT NULL, PRIMARY KEY(id));
 ```
 
 <br>

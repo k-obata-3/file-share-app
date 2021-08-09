@@ -18,49 +18,40 @@ class Model
     }
 
     /**
-     * ログインアカウント取得
+     * アカウント検索
      */
-    public function getLoginAccount($name, $pass)
+    public function findAccount($user_id)
     {
-        // $stmt = $this-> pdo-> prepare(sprintf('SELECT * FROM %s WHERE name = ? AND password = ?', TABLE_NAME));
-        // $stmt-> execute(array($name, $pass));
-        // return $stmt-> fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    /**
-     * 一意のアカウントを取得
-     * idが0：すべてのアカウントを対象
-     * idが0以外：指定のアカウント以外を対象
-     */
-    public function getUniqueAccount($name, $id)
-    {
-        $stmt = $this-> pdo-> prepare(sprintf('SELECT * FROM %s WHERE name = ? AND id != ?', TABLE_NAME));
-        $stmt-> execute(array($name, $id));
+        $stmt = $this-> pdo-> prepare(sprintf('SELECT * FROM %s WHERE user_id = ?', TABLE_NAME));
+        $stmt-> execute(array($user_id));
         return $stmt-> fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
-     * アカウント登録
+     * アカウント情報登録
      */
-    public function insertAccount($name, $pass, $auth)
+    public function insertAccount($user_id, $pass, $auth)
     {
         $this-> pdo-> beginTransaction();
-        $stmt = $this-> pdo ->prepare(sprintf('INSERT IGNORE INTO %s (name, password, authority) values(?, ?, ?)', TABLE_NAME));
-        $stmt-> execute(array($name, $pass, $auth));
+        $stmt = $this-> pdo ->prepare(sprintf('INSERT IGNORE INTO %s (user_id, password, authority) values(?, ?, ?)', TABLE_NAME));
+        $stmt-> execute(array($user_id, $pass, $auth));
         $this-> pdo-> commit();
     }
 
     /**
      * アカウント情報更新
      */
-    public function updateAccountInfo($name, $pass, $id)
+    public function updateAccount($user_id, $pass, $id)
     {
         $this-> pdo-> beginTransaction();
-        $stmt = $this-> pdo-> prepare(sprintf('UPDATE %s SET name = ?, password = ? WHERE id = ?', TABLE_NAME));
-        $stmt-> execute(array($name, $pass, $id));
+        $stmt = $this-> pdo-> prepare(sprintf('UPDATE %s SET user_id = ?, password = ? WHERE id = ?', TABLE_NAME));
+        $stmt-> execute(array($user_id, $pass, $id));
         $this-> pdo-> commit();
     }
 
+    /**
+     * アカウント一覧取得
+     */
     public function getAccountList()
     {
         $stmt = $this-> pdo-> prepare(sprintf('SELECT * FROM %s', TABLE_NAME));
@@ -81,16 +72,10 @@ class Model
                     break;
             }
 
-            $userInfo[] = array('id'=>$row['id'], 'name'=>$row['name'], 'authNum'=>$row['authority'], 'authority'=>$authority);
+            $userInfo[] = array('id'=>$row['id'], 'user_id'=>$row['user_id'], 'authNum'=>$row['authority'], 'authority'=>$authority);
         }
 
         return $userInfo;
     }
 }
-
-
-
-
-
-
  ?>

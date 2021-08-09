@@ -13,6 +13,11 @@ class FileDelete extends Base
     {
         try
         {
+            if(!isset($_POST['file']))
+            {
+                header('Location: fileList.php');
+            }
+
             $deleteFiles = $_POST['file'];
 
             if(count($deleteFiles) != 0)

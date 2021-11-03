@@ -21,7 +21,7 @@ class FileDownloader extends Base
             $files = $_POST['file'];
             if(count($files) > 1)
             {
-                $zipFileName = UPLOAD_DIR ."/" ."download.zip";
+                $zipFile = UPLOAD_DIR ."/" ."download.zip";
                 $zip = new ZipArchive();
                 $result = $zip->open($zipFile, ZipArchive::CREATE);
                 if($result === true)
@@ -35,7 +35,7 @@ class FileDownloader extends Base
                     }
                     $zip->close();
                     // zipファイルをダウンロード
-                    $this->download($zipFileName);
+                    $this->download($zipFile);
                 }
 
                 unlink($zipFile);

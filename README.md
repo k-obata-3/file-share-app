@@ -1,6 +1,16 @@
-# 概要
+# 目次
+
+<!-- TOC -->
+
+1. [データベースとテーブルの作成](#データベースとテーブルの作成)
+
+1. [権限の設定](#権限の設定)
+
+<!-- /TOC -->
 
 <br>
+
+# データベースとテーブルの作成
 
 MySQLにログイン
 ```
@@ -19,7 +29,7 @@ CREATE TABLE IF NOT EXISTS account (id BIGINT auto_increment, user_id VARCHAR(25
 
 <br>
 
-# 権限
+# 権限の設定
 
 ```
 sudo find /var/www/html/project/  -type d -exec chmod 755 {} +

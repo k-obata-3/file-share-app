@@ -1,9 +1,9 @@
 #common-body {
-	background-image: url("../resource/bernard-hermant-hQ3WZnY3yZ0-unsplash.jpg");
+	/* background-image: url("../resource/bernard-hermant-hQ3WZnY3yZ0-unsplash.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
-	background-size: cover;
+	background-size: cover; */
 }
 
 #container {
@@ -22,4 +22,13 @@
     background-color: rgba(0, 0, 0, 0);
     color: white;
     text-decoration: underline
+}
+
+.table {
+	/* border: 1.1px solid rgba(0,0,0,.125); */
+	border: 1.1px solid #343a40;
+}
+
+.btn-light {
+	border: 1.1px solid #343a40;
 }

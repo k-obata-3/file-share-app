@@ -32,7 +32,9 @@ class UserInfoEdit extends Base
             }
 
             $this-> smarty-> assign('message',$this-> message);
-            $this-> smarty-> display(USER_INFO_EDIT_VIEW);
+            $this-> smarty-> assign(TPL_NAME, USER_INFO_EDIT_VIEW);
+            $this-> smarty-> assign(TITLE, TITLE_USER_INFO_EDIT);
+            $this-> smarty-> assign(NAV_BTN_TYPE, NAV_BTN_BACK_FILE_LIST);
         }
         catch (Exception $e)
         {

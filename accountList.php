@@ -18,7 +18,9 @@ class AccountList extends Base
             $this-> smarty-> assign('authority',$_SESSION['authority']);
             $this-> smarty-> assign('list',$rows);
 
-            $this-> smarty-> display(ACCOUNT_LIST_VIEW);
+            $this-> smarty-> assign(TPL_NAME, ACCOUNT_LIST_VIEW);
+            $this-> smarty-> assign(TITLE, TITLE_ACCOUNT_LIST);
+            $this-> smarty-> assign(NAV_BTN_TYPE, NAV_BTN_BACK_FILE_LIST);
         }
         catch(Exception $e)
         {

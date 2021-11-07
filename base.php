@@ -37,6 +37,7 @@ abstract class Base
             if($this-> isAuth())
             {
                 $this-> exec();
+                $this-> smarty-> display(MAIN_VIEW);
             }
             else
             {

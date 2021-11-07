@@ -33,7 +33,9 @@ class FileList extends Base
             $this-> smarty-> assign('list',$fileInfo);
             $this-> smarty-> assign('authority',$_SESSION['authority']);
 
-            $this-> smarty-> display(FILE_LIST_VIEW);
+            $this-> smarty-> assign(TPL_NAME, FILE_LIST_VIEW);
+            $this-> smarty-> assign(TITLE, TITLE_FILE_LIST);
+            $this-> smarty-> assign(NAV_BTN_TYPE, NAV_BTN_LOGOUT);
         }
         catch(Exception $e)
         {

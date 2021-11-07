@@ -29,7 +29,9 @@ class Signup extends Base
             }
 
             $this-> smarty-> assign('message',$this-> message);
-            $this-> smarty-> display(SIGNUP_VIEW);
+            $this-> smarty-> assign(TPL_NAME, SIGNUP_VIEW);
+            $this-> smarty-> assign(TITLE, TITLE_SIGNUP);
+            $this-> smarty-> assign(NAV_BTN_TYPE, NAV_BTN_BACK_LOGIN);
         }
         catch (Exception $e)
         {

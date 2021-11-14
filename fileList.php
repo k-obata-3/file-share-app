@@ -15,7 +15,6 @@ class FileList extends Base
         {
             $fileList = preg_grep('/^([^.])/', scandir(UPLOAD_DIR));
             $fileInfo = [];
-
             foreach($fileList as $file)
             {
                 $absolutePath = UPLOAD_DIR ."/" .$file;
@@ -36,6 +35,8 @@ class FileList extends Base
             $this-> smarty-> assign(TPL_NAME, FILE_LIST_VIEW);
             $this-> smarty-> assign(TITLE, TITLE_FILE_LIST);
             $this-> smarty-> assign(NAV_BTN_TYPE, NAV_BTN_LOGOUT);
+            $this-> smarty-> assign(CONF_MODAL_MESSAGE, LOGOUT_CONF_MESSAGE);
+            $this-> smarty-> assign(SUBMIT_MODAL_MESSAGE, FILE_DELETE_CONF_MESSAGE);
         }
         catch(Exception $e)
         {

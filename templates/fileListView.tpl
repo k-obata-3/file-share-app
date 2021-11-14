@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="col-md-10 offset-md-1" id="file-table">
-		<form name="file-form" method="post">
+		<form name="file-form" id="file-form" method="post" action="fileDelete.php">
 			<table class="table table-striped table-bordered table-light">
 				<thead class="thead-dark">
 					<tr>
@@ -41,9 +41,9 @@
 				<button type="submit" class="btn btn-sm btn-success" id="download-btn" formaction="fileDownloader.php">ダウンロード</button>
 			</div>
 			<div class="text-right">
-				<button type="submit" class="btn btn-sm btn-danger" id="delete-btn" formaction="fileDelete.php">削除</button>
+				<button type="button" class="btn btn-sm btn-danger" id="delete-btn" data-toggle="modal" onclick="modalOpen()">削除</button>
 			</div>
-		</form><br/>
+		</form>
 	</div>
 </div>
 
@@ -75,16 +75,39 @@
 </style>
 
 <script type="text/javascript">
-	function callLogout()
+	$(document).ready(function()
 	{
-		location.href = 'logout.php';
+		// ファイル削除 submit
+		$('#conf-submit-modal #modal-yes').on('click', function()
+		{
+			modalClose();
+			$('#file-form').submit();
+		});
+	});
+
+	// 確認ダイアログ表示
+	function modalOpen()
+	{
+		let checkItem = $(':checkbox[name="file[]"]:checked');
+		if(checkItem.length != 0)
+		{
+			$('#conf-submit-modal').modal('show');
+		}
 	}
 
+	// 確認ダイアログ非表示
+	function modalClose()
+	{
+		$('#conf-submit-modal').modal('hide');
+	}
+
+	// ユーザ情報編集に遷移
 	function toUserInfoEdit()
 	{
 		location.href = 'userInfoEdit.php';
 	}
 
+	// アカウント一覧に遷移
 	function toAccountList()
 	{
 		location.href = 'accountList.php';

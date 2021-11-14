@@ -12,5 +12,11 @@ $(document).ready(function()
         $(':checkbox').prop('checked', isChecked);
     });
 
+    // ログアウト
+    $('#conf-modal #modal-yes').on('click', function()
+    {
+        location.href = 'logout.php';
+    });
+
 
 });

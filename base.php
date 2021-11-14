@@ -38,6 +38,9 @@ abstract class Base
             {
                 $this-> exec();
                 $this-> smarty-> display(MAIN_VIEW);
+                $this-> smarty-> assign(SUBMIT_MODAL_MESSAGE, '');
+                $this-> smarty-> assign(CONF_MODAL_MESSAGE, '');
+                $this-> smarty-> assign(ERR_MODAL_MESSAGE, '');
             }
             else
             {

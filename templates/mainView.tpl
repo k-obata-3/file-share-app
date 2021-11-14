@@ -17,13 +17,16 @@
             {elseif "$nav_btn_type" == 2}
                 <button type="button" class="btn btn-sm btn-outline-light" id="border-less" onclick="toFileList()">ファイル一覧に戻る</button>
             {elseif "$nav_btn_type" == 3}
-                <button type="button" class="btn btn-sm btn-outline-light" onclick="callLogout()">ログアウト</button>
+                <button type="button" class="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#conf-modal">ログアウト</button>
             {elseif "$nav_btn_type" == 4}
                 <button type="button" class="btn btn-sm btn-outline-light" id="border-less" onclick="toLogin()">ログインに戻る</button>
             {/if}
         </nav>
         <div>
             {include file="$tpl_name.tpl"}
+            {include file="confirmModal.tpl"}
+            {include file="confirmSubmitModal.tpl"}
+            {include file="errorModal.tpl"}
         </div>
     </body>
 </html>

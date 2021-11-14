@@ -36,7 +36,7 @@
 		var pass = document.forms.userInfoEditForm.elements['password'];
 		if(name.value == "" || pass.value == "")
 		{
-			alert("ユーザIDまたはパスワードが未入力です。");
+			$('#err-modal').modal('show');
 			return false;
 		}
 

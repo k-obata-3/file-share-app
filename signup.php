@@ -32,6 +32,7 @@ class Signup extends Base
             $this-> smarty-> assign(TPL_NAME, SIGNUP_VIEW);
             $this-> smarty-> assign(TITLE, TITLE_SIGNUP);
             $this-> smarty-> assign(NAV_BTN_TYPE, NAV_BTN_BACK_LOGIN);
+            $this-> smarty-> assign(ERR_MODAL_MESSAGE, INPUT_ERROR_MESSAGE);
         }
         catch (Exception $e)
         {

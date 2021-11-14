@@ -35,6 +35,7 @@ class Login extends Base
             $this-> smarty-> assign(TPL_NAME, LOGIN_VIEW);
             $this-> smarty-> assign(TITLE, TITLE_LOGIN);
             $this-> smarty-> assign(NAV_BTN_TYPE, NAV_BTN_FORWARD_SIGNUP);
+            $this-> smarty-> assign(ERR_MODAL_MESSAGE, INPUT_ERROR_MESSAGE);
         }
         catch (Exception $e)
         {

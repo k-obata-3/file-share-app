@@ -9,6 +9,7 @@ define('DB_USER', 'root');
 define('DB_PASS', 'password');
 define('DB_NAME', 'file_share_app');
 define('DB_HOST', '%');
+define('DB_PORT', '3308');
 define('TABLE_NAME', 'account');
 
 // テンプレート関連定数

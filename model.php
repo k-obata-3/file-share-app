@@ -13,7 +13,7 @@ class Model
      */
     function __construct()
     {
-        $dsn = sprintf('mysql:dbhost=%s; dbname=%s', DB_HOST, DB_NAME);
+        $dsn = sprintf('mysql:dbhost=%s; port=%s; dbname=%s', DB_HOST, DB_PORT, DB_NAME);
         $this->pdo = new PDO($dsn, DB_USER, DB_PASS, array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
     }
 

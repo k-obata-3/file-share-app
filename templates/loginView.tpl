@@ -15,7 +15,7 @@
 					</div>
 				</div>
 			</div>
-			<center>
+			<center class="global_error_msg">
 				{$message}
 			</center>
 		</div>
@@ -39,9 +39,22 @@
 	{
 		var id = document.forms.loginForm.elements['user_id'];
 		var pass = document.forms.loginForm.elements['password'];
-		if(id.value == "" || pass.value == "")
+
+		hideAllFieldError();
+		var isValid = true;
+		if(id.value == "")
 		{
-			$('#err-modal').modal('show');
+			showFieldError($('input[name="user_id"]'), "入力必須項目です")
+			isValid = false;
+		}
+
+		if(pass.value == "")
+		{
+			showFieldError($('input[name="password"]'), "入力必須項目です")
+			isValid = false;
+		}
+
+		if(!isValid) {
 			return false;
 		}
 

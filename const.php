@@ -7,6 +7,7 @@ define('LOGOUT_CONF_MESSAGE', "ログアウトします。よろしいですか�
 
 // エラーメッセージ
 define('USER_ID_UNIQUE_ERROR_MESSAGE', 'ユーザIDは既に使用されています。');
+define('USER_ID_NOT_FOUND_MESSAGE', 'ユーザIDが不正です。');
 define('REGISTRATION_SUCCESSFUL_MESSAGE', '登録しました。');
 
 // モーダルテンプレート用定数

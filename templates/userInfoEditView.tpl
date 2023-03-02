@@ -4,7 +4,8 @@
 		<div class="col-md-6 offset-md-3" id="container">
 			<div class="card rounded-0">
 				<div class="card-body col-md-10 offset-md-1">
-					<center><h3>ユーザ情報編集</h3></center>
+					<!-- <center><h3>ユーザ情報編集</h3></center> -->
+					<center><h3>パスワード変更</h3></center>
 					<div class="form-group">
 						<label class="col-form-label">ユーザID</label>
 						<input type="text" class="form-control" name="user_id" value="">
@@ -15,7 +16,7 @@
 					</div>
 				</div>
 			</div>
-			<center>
+			<center class="global_error_msg">
 				{$message}
 			</center>
 		</div>
@@ -34,13 +35,26 @@
 	{
 		var name = document.forms.userInfoEditForm.elements['user_id'];
 		var pass = document.forms.userInfoEditForm.elements['password'];
-		if(name.value == "" || pass.value == "")
+
+		hideAllFieldError();
+		var isValid = true;
+		if(name.value == "")
 		{
-			$('#err-modal').modal('show');
+			showFieldError($('input[name="user_id"]'), "入力必須項目です")
+			isValid = false;
+		}
+
+		if(pass.value == "")
+		{
+			showFieldError($('input[name="password"]'), "入力必須項目です")
+			isValid = false;
+		}
+
+		if(!isValid) {
 			return false;
 		}
 
-		// pass.value = hex_md5(pass.value);
+		pass.value = hex_md5(pass.value);
 		document.forms.userInfoEditForm.submit();
 		return true;
 	}
